@@ -106,9 +106,9 @@ describe("About Functions", function() {
       // An internal comment
       return a * b;
     };
-    expect(multiply.toString()).toBe('function (a, b) {
-      \'// An internal comment
-      'return a * b;
-    '})';
+    var sourceNoWhitespace = multiply.toString().replace(/\s+/g, ' ');
+
+    expect(sourceNoWhitespace).toBe("function (a, b) { // An internal comment return a * b; }");  
+
   });    
-});
+})
