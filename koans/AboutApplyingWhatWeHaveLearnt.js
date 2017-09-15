@@ -159,22 +159,110 @@ describe("About Applying What We Have Learnt", function() {
     expect(isPrime(4)).toBe(false);
     expect(findLargestPrimeFactor(20)).toBe(5);
   });
-  /*
+  
   it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
+    function isPalindrome(num) {
+      return num.toString() === num.toString().split('').reverse().join('');
+    }
+
+    function multiply(num1, num2) {
+        return num1*num2;
+    }
+
+
+    function findLargestPalindrome() {
+      var num1 = 999;
+      var num2 = 999;
+
+      while (num2 >= 100) {
+        if (isPalindrome(multiply(num1, num2))) {
+          return multiply(num1, num2).toString();
+        }
+        else {
+          num2 -= 1;
+        }
+        if (num2 === 100) {
+          num1 -= 1;
+          num2 = 999;
+        }
+      }
+    }
+
+    expect(isPalindrome(567)).toBe(false);
+    expect(isPalindrome(565)).toBe(true);
+    expect(isPalindrome(5678)).toBe(false);
+    expect(isPalindrome(7667)).toBe(true);
+    expect(findLargestPalindrome()).toBe('580085');
     
   });
+
+  
 
   it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
-      
     
+
+    var divisibleByAll = function(num, range) {
+        
+      for (var i = 0; i < range.length; i++) {
+        if (num % range[i] !==0) {
+              return false;
+            }
+      }
+
+      return true;
+    }
+
+    function divisibleByOneToTwenty() {
+      var range = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+      var count = 20;
+      var divisible = false;
+
+      while (divisible === false) {
+        if (divisibleByAll(count, range)) {
+          divisible = true;
+          console.log(count);
+          return count;
+        } else {
+          count+=20;
+        }
+      }
+    };
+
+    expect(divisibleByAll(6, [1, 2, 3])).toBe(true);
+    expect(divisibleByAll(6, [1, 2,3, 4])).toBe(false);
+    expect(divisibleByAll(18, [1, 2, 3, 6, 9, 18])).toBe(true);
+    expect(divisibleByAll(18, [1, 2, 3, 4, 9, 18])).toBe(false);
+    expect(divisibleByOneToTwenty()).toBe(232792560);
   });
 
+  
+
   it("should find the difference between the sum of the squares and the square of the sums", function () {
+    
+
+    var sumOfSquares = function(num1, num2) {
+      return num1*num1 + num2*num2;
+    }
+
+    var squareOfSums = function(num1, num2) {
+      return (num1+num2)*(num1 + num2);
+    }
+
+    var findDiff = function(num1, num2) {
+      return sumOfSquares(num1, num2) - squareOfSums(num1, num2);
+    }
+
+    expect(sumOfSquares(5, 6)).toBe(61);
+    expect(sumOfSquares(3, 8)).toBe(73);
+    expect(squareOfSums(5, 6)).toBe(121);
+    expect(squareOfSums(3, 8)).toBe(121);
+    expect(findDiff(5, 6)).toBe(-60);
+    expect(findDiff(3, 8)).toBe(-48);
     
   });
 
   it("should find the 10001st prime", function () {
 
   });
-  */
+  
 });
