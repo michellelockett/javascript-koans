@@ -220,7 +220,6 @@ describe("About Applying What We Have Learnt", function() {
       while (divisible === false) {
         if (divisibleByAll(count, range)) {
           divisible = true;
-          console.log(count);
           return count;
         } else {
           count+=20;
@@ -262,6 +261,41 @@ describe("About Applying What We Have Learnt", function() {
   });
 
   it("should find the 10001st prime", function () {
+    function isPrime(num) {
+      for (var i = 2; i <= num/2; i++) {
+        if (num % i === 0) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+
+    function primeFinder(target) {
+      var counter = 0;
+      var i = 2;
+
+      while (counter < target) {
+        if (isPrime(i)) {
+          counter += 1;
+          if (counter === target) {
+              return i;
+          }
+          i += 1;
+        } else if (!isPrime(i)) {
+          i += 1;
+        }
+      }
+    }
+
+    expect(isPrime(3)).toBe(true);
+    expect(isPrime(20)).toBe(false);
+    expect(primeFinder(4)).toBe(7);
+    expect(primeFinder(1)).toBe(2);
+    expect(primeFinder(2)).toBe(3);
+    expect(primeFinder(3)).toBe(5);
+    expect(primeFinder(10)).toBe(29);
+    expect(primeFinder(10001)).toBe(104743);
 
   });
   
